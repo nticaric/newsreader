@@ -14,7 +14,8 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script>
     <script type="text/javascript">
     WebFontConfig = {
     google: {
@@ -37,7 +38,7 @@
     <header class="header  push-down-45">
       <div class="container">
         <div class="logo  pull-left">
-          <a href="index.html">
+          <a href="/">
             <img src="images/logo.png" alt="Logo" width="352" height="140">
           </a>
         </div>
@@ -55,9 +56,9 @@
           <div class="collapse  navbar-collapse" id="readable-navbar-collapse">
             <ul class="navigation">
               <li class="dropdown  active">
-                <a href="index.html" class="dropdown-toggle" data-toggle="dropdown">Home</a>
+                <a href="/" class="dropdown-toggle" data-toggle="dropdown">Home</a>
                 <ul class="navigation__dropdown">
-                  <li> <a href="index.html">Home (Sidebar)</a> </li>
+                  <li> <a href="/">Home (Sidebar)</a> </li>
                   <li> <a href="home-slider.html">Home (Slider)</a> </li>
                   <li> <a href="home-multi-columns.html">Home (Multi Columns)</a> </li>
                   <li> <a href="home-ads.html">Home (With Ads)</a> </li>
@@ -124,13 +125,15 @@
     </div>
     <div class="multi-columns">
       <div class="container">
-        <div class="row">
+        <div class="grid row">
           @foreach($news as $entry)
-            <div class="col-md-4">
-              <div class="boxed  push-down-45">
+            <div class="col-md-4 grid-item">
+              <div class="boxed push-down-45">
 
                   <div class="meta">
-                    <img class="wp-post-image" src="{{$entry->image}}" alt="Blog image" width="748" height="324">
+                    <a href="{{$entry->link}}">
+                      <img class="wp-post-image" src="{{$entry->image}}" alt="Blog image" width="748" height="324">
+                    </a>
                     <div class="meta__container">
                       <div class="row">
                         <div class="col-xs-12  col-sm-12">
@@ -203,7 +206,7 @@
             <h6>Navigation</h6>
             <hr>
             <ul class="navigation">
-              <li> <a href="index.html">Home</a> </li>
+              <li> <a href="/">Home</a> </li>
               <li> <a href="single-post.html">Post Formats</a> </li>
               <li> <a href="elements.html">Elements</a> </li>
               <li> <a href="about-us.html">About</a> </li>
@@ -242,16 +245,14 @@
     </footer>
     <script src="js/main.js"></script>
     <script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname = 'readablehtml'; // required: replace example with your forum shortname
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function() {
-    var s = document.createElement('script');
-    s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
+    $( window ).load( function() {
+      var elem = document.querySelector('.grid');
+      var msnry = new Masonry( elem, {
+        // options
+        itemSelector: '.grid-item',
+      });
+    });
+
     </script>
   </body>
 </html>

@@ -40,7 +40,7 @@ $app->get('/', function ()  {
             $n->title = (string) $entry->title;
             $n->summary = (string) $entry->summary;
             $n->author  = $entry->author->name;
-            $n->updated  = $entry->updated;
+            $n->updated  = (new DateTime($entry->updated))->format("d M G:i");
             $news[] = $n;
         }
 
