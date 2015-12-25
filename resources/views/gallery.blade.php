@@ -125,106 +125,13 @@
         </div>
     </div>
     <div class="container">
+    @foreach($images as $image)
         <div class="boxed  push-down-60">
 
-            <div class="meta">
-                <img class="wp-post-image" src="{{$image}}" alt="Blog image" width="1138" height="493">
-                <div class="meta__container">
-                    <div class="row">
-                        <div class="col-xs-12  col-sm-8">
-                            <div class="meta__info">
-                                <span class="meta__author"><img src="/images/dummy/about-5.jpg" alt="Meta avatar" width="30" height="30"> <a href="#">Danielle Thatcher</a> in <a href="#">News</a> </span>
-                                <span class="meta__date"><span class="fa fa-calendar"></span> &nbsp; 6. May, 2014</span>
-                            </div>
-                        </div>
-                        <div class="col-xs-12  col-sm-4">
-                            <div class="meta__comments">
-                                <span class="fa fa-comment"></span> &nbsp;
-                                <a href="single-post.html#disqus_thread"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1 push-down-60">
-
-                    <div class="post-content">
-                        {!! $text !!}
-                    </div>
-
-                    <div class="row">
-                        <div class="col-xs-12  col-sm-6">
-
-                            <div class="post-comments">
-                                <a class="btn  btn-primary" href="single-post.html#disqus_thread"></a>
-                            </div>
-
-                        </div>
-                        <div class="col-xs-12  col-sm-6">
-
-                            <div class="social-icons">
-                                <a href="#" class="social-icons__container"> <span class="fa fa-facebook"></span> </a>
-                                <a href="#" class="social-icons__container"> <span class="fa fa-twitter"></span> </a>
-                                <a href="#" class="social-icons__container"> <span class="fa fa-email"></span> </a>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12  col-sm-6">
-
-                            <div class="post-author">
-                                <h6>Written By</h6>
-                                <hr>
-                                <img src="/images/dummy/about-5.jpg" alt="Post author">
-                                <h5>
-<a href="#">Danielle Thatcher</a>
-</h5>
-                                <span class="post-author__text">Interface Designer, Poker Player and Imaginary Breakdancer</span>
-                            </div>
-
-                        </div>
-                        <div class="col-xs-12  col-sm-6">
-
-                            <div class="tags">
-                                <h6>Tags</h6>
-                                <hr>
-                                <a href="#" class="tags__link">Tech</a>
-                                <a href="#" class="tags__link">Web Design</a>
-                                <a href="#" class="tags__link">HTML/CSS</a>
-                                <a href="#" class="tags__link">Tutorials</a>
-                                <a href="#" class="tags__link">Workflow</a>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="related-stories">
-                        <h6>Related Stories</h6>
-                        <hr>
-                        <h4>
-<a href="#">Thoughts on Apple Design</a>
-</h4>
-                        <h5>Why Apple's tech is so much better than everyone else's.</h5>
-                        <hr/>
-                        <h4>
-<a href="#">10 Things I Know About Being Happy</a>
-</h4>
-                        <h5>Why Google's tech is so much better than everyone else's.</h5>
-                        <hr/>
-                        <h4>
-<a href="#">Taking Time to Reflect on Your Life Journey</a>
-</h4>
-                        <h5>Why Microsoft's tech is so much better than everyone else's.</h5>
-                    </div>
-
-                </div>
-            </div>
+            <img class="wp-post-image" src="{{$image}}">
 
         </div>
+    @endforeach
     </div>
     <footer class="footer">
         <div class="container">

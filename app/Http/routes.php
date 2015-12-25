@@ -2,6 +2,7 @@
 
 use Goutte\Client;
 use Symfony\Component\CssSelector\CssSelector;
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -12,8 +13,34 @@ use Symfony\Component\CssSelector\CssSelector;
 | and give it the Closure to call when that URI is requested.
 |
 */
+$app->get('/jutarnji/{id}', function($id){
 
-$app->get('/jutarnji/{slug}/{id}', function($slug, $id) {
+    $url = "http://www.jutarnji.hr/".$id;
+    $client = new Client();
+    $crawler = $client->request('GET', $url);
+    $newUrl = $crawler->filterXPath("//meta[@property='og:url']")->attr('content');
+    $newUrl = str_replace("?foto=1", "", $newUrl);
+    $page = 1;
+    $images = [];
+    do {
+        $page++;
+        try {
+            $image = $crawler->filterXPath('//*[@class="foto"]/a/img')->attr('src');
+            $crawler = $client->request('GET', $newUrl."?foto=$page");
+        } catch (Exception $e) {
+            $image = null;
+        }
+
+        if($image) $images[] = $image;
+    } while ($image);
+
+    return view('gallery', compact('images'));
+
+});
+$app->get('/jutarnji/{slug}/{id}', function($slug, $id, Request $request) {
+    if (strpos($slug,'foto--') !== false) {
+        if( $request->input('artId')) return redirect('/jutarnji/'.$id);
+    }
     $url = "http://www.jutarnji.hr/".$slug."/".$id;
     $client = new Client();
     $crawler = $client->request('GET', $url);
@@ -49,7 +76,9 @@ $app->get('/', function ()  {
 });
 
 function prepareLink($text) {
-    return str_replace("http://www.jutarnji.hr/", '/jutarnji/', $text);
+    $text = str_replace("http://www.jutarnji.hr/", '/jutarnji/', $text);
+    $text = str_replace('src="/jutarnji', 'src="http://jutarnji.hr', $text);
+    return $text;
 }
 function customTrim($str) {
     $str = str_replace("&nbsp;", '', $str);
