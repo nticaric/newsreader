@@ -48,6 +48,24 @@ $app->get('/jutarnji/{slug}/{id}', function($slug, $id, Request $request) {
         return redirect('/jutarnji/'.$id);
     }
 
+    //ako je domidizajn
+    if(strpos($newUrl, 'domidizajn.jutarnji.hr') !== false) {
+        $crawler = $client->request('GET', $newUrl);
+        $galleryLink = $crawler->filterXPath('//*[@class="single-text-gallerylink button"]')->attr('href');
+        
+        $crawler = $client->request('GET', $galleryLink);
+
+        $postID = $crawler->filterXPath('//*[@name="comment_post_ID"]')->attr('value');
+        $url = "http://domidizajn.jutarnji.hr/wp-admin/admin-ajax.php?action=dd_gallery_photos&postid=".$postID;
+        $json = file_get_contents($url);
+        $galleryThumbs = json_decode($json);
+
+        foreach ($galleryThumbs->photos as $thumb) {
+            $images[] = $thumb->src;
+        }
+        return view('gallery', compact('images'));
+    }
+
     $text = prepareLink($crawler->filterXPath('//*[@class="dr_article"]')->html());
     $image = $crawler->filterXPath('//*[@id="foto"]/ul/li/div[1]/img')->attr('src');
     return view('single', compact('text', 'image'));

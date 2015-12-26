@@ -154,8 +154,7 @@
                               <h2 class="front-page-title">
                                 <a href="{{$entry->link}}">{{$entry->title}}</a>
                               </h2>
-                              <h3>{{$entry->title}}</h3>
-                              <p>{{$entry->summary}}</p>
+                              <h3>{{$entry->summary}}</h3>
                           </div>
 
                           <a href="{{$entry->link}}">
