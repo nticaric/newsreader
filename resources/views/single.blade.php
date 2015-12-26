@@ -159,66 +159,11 @@
                         <div class="col-xs-12  col-sm-6">
 
                             <div class="post-comments">
-                                <a class="btn  btn-primary" href="single-post.html#disqus_thread"></a>
+                                <a class="btn  btn-primary" href="/">Back to Homepage</a>
                             </div>
 
                         </div>
-                        <div class="col-xs-12  col-sm-6">
 
-                            <div class="social-icons">
-                                <a href="#" class="social-icons__container"> <span class="fa fa-facebook"></span> </a>
-                                <a href="#" class="social-icons__container"> <span class="fa fa-twitter"></span> </a>
-                                <a href="#" class="social-icons__container"> <span class="fa fa-email"></span> </a>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12  col-sm-6">
-
-                            <div class="post-author">
-                                <h6>Written By</h6>
-                                <hr>
-                                <img src="/images/dummy/about-5.jpg" alt="Post author">
-                                <h5>
-<a href="#">Danielle Thatcher</a>
-</h5>
-                                <span class="post-author__text">Interface Designer, Poker Player and Imaginary Breakdancer</span>
-                            </div>
-
-                        </div>
-                        <div class="col-xs-12  col-sm-6">
-
-                            <div class="tags">
-                                <h6>Tags</h6>
-                                <hr>
-                                <a href="#" class="tags__link">Tech</a>
-                                <a href="#" class="tags__link">Web Design</a>
-                                <a href="#" class="tags__link">HTML/CSS</a>
-                                <a href="#" class="tags__link">Tutorials</a>
-                                <a href="#" class="tags__link">Workflow</a>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="related-stories">
-                        <h6>Related Stories</h6>
-                        <hr>
-                        <h4>
-<a href="#">Thoughts on Apple Design</a>
-</h4>
-                        <h5>Why Apple's tech is so much better than everyone else's.</h5>
-                        <hr/>
-                        <h4>
-<a href="#">10 Things I Know About Being Happy</a>
-</h4>
-                        <h5>Why Google's tech is so much better than everyone else's.</h5>
-                        <hr/>
-                        <h4>
-<a href="#">Taking Time to Reflect on Your Life Journey</a>
-</h4>
-                        <h5>Why Microsoft's tech is so much better than everyone else's.</h5>
                     </div>
 
                 </div>

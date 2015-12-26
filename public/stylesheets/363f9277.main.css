@@ -16,7 +16,7 @@ audio:not([controls]) {
 }
 
 html {
-  font-family: Andale Mono, Courier;
+  font-family: Andale Mono,"Courier New";
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -388,7 +388,6 @@ cite {
 }
 
 .h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6 {
-  font-family: "Open Sans",sans-serif;
   font-weight: 500;
   line-height: 1.1;
   color: #2f343b;
@@ -4030,7 +4029,7 @@ h2 {
 
 @media (min-width:768px) {
   h2 {
-    font-size: 20px;
+    font-size: 16px;
   }
 }
 
@@ -4079,7 +4078,6 @@ h5 {
 
 h6 {
   font-size: 12px;
-  font-family: Lato,sans-serif;
   text-transform: uppercase;
   margin: 0;
   color: #9a9a90;
@@ -4369,7 +4367,6 @@ h1+h3,h2+h3 {
 .navbar-default {
   background-color: transparent;
   border: 0;
-  font-family: Lato,sans-serif;
   margin: 0;
   min-height: 0;
 }
@@ -4665,7 +4662,6 @@ body.search-mode .search-panel {
   line-height: 1.5;
   color: #9a9a90;
   font-size: 14px;
-  font-family: Lato,sans-serif;
 }
 
 .sidebar h6 {
@@ -4788,7 +4784,6 @@ body.search-mode .search-panel {
 }
 
 .widget-categories {
-  font-family: Lato,sans-serif;
   font-size: 14px;
   font-weight: 700;
 }
@@ -4838,7 +4833,6 @@ body.search-mode .search-panel {
 }
 
 .widget-posts {
-  font-family: Lato,sans-serif;
   font-weight: 700;
 }
 
@@ -4899,7 +4893,6 @@ body.search-mode .search-panel {
 }
 
 .widget-posts .widget-posts__time {
-  font-family: Lato,sans-serif;
   color: #9a9a90;
 }
 
@@ -4907,7 +4900,6 @@ body.search-mode .search-panel {
   list-style: none;
   padding: 0;
   color: #9a9a90;
-  font-family: Lato,sans-serif;
   font-weight: 700;
 }
 
@@ -4945,7 +4937,6 @@ body.search-mode .search-panel {
 }
 
 .widget-contact__title {
-  font-family: Lato,sans-serif;
   color: #51ab6d;
 }
 
@@ -4969,7 +4960,6 @@ body.search-mode .search-panel {
   padding: 5px 0;
   text-transform: none;
   border: 0;
-  font-family: Lato,sans-serif;
   font-size: 14px;
 }
 
@@ -5004,7 +4994,6 @@ body.search-mode .search-panel {
   border-radius: 4px;
   font-weight: 700;
   font-size: 14px;
-  font-family: Lato,sans-serif;
   padding: 8px 16px;
   margin-bottom: 5px;
 }
@@ -5197,7 +5186,6 @@ body.search-mode .search-panel {
 }
 
 .meta__container,.meta__container--without-image {
-  font-family: Lato,sans-serif;
   font-weight: 700;
   font-size: 14px;
   color: #999;
@@ -5443,7 +5431,6 @@ body.search-mode .search-panel {
   text-transform: uppercase;
   font-size: 14px;
   font-weight: 700;
-  font-family: Lato,sans-serif;
   -webkit-transition: all .1s linear;
   transition: all .1s linear;
 }
@@ -5517,7 +5504,6 @@ body.search-mode .search-panel {
   padding: 9.5px 20px;
   font-size: 14px;
   font-weight: 700;
-  font-family: Lato,sans-serif;
   -webkit-transition: all .1s linear;
   transition: all .1s linear;
 }
@@ -5559,11 +5545,12 @@ body.search-mode .search-panel {
 }
 
 .post-content--front-page h3 {
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .post-content--front-page p {
-  font-size: 18px;
+  font-size: 14px;
+  color: #428BCA;
 }
 
 .post-comments {
@@ -5664,7 +5651,6 @@ body.search-mode .search-panel {
 }
 
 .contact form {
-  font-family: Lato,sans-serif;
   font-size: 16px;
 }
 

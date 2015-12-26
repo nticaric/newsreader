@@ -82,6 +82,8 @@ $app->get('/', function ()  {
 function prepareLink($text) {
     $text = str_replace("http://www.jutarnji.hr/", '/jutarnji/', $text);
     $text = str_replace('src="/jutarnji', 'src="http://jutarnji.hr', $text);
+
+    $text = preg_replace("/<script.*?\/script>/s", "", $text) ? : $text;
     return $text;
 }
 function customTrim($str) {
