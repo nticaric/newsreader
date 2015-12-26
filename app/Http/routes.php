@@ -38,12 +38,16 @@ $app->get('/jutarnji/{id}', function($id){
 
 });
 $app->get('/jutarnji/{slug}/{id}', function($slug, $id, Request $request) {
-    if (strpos($slug,'foto--') !== false) {
-        if( $request->input('artId')) return redirect('/jutarnji/'.$id);
-    }
     $url = "http://www.jutarnji.hr/".$slug."/".$id;
     $client = new Client();
     $crawler = $client->request('GET', $url);
+    
+    $newUrl = $crawler->filterXPath("//meta[@property='og:url']")->attr('content');
+
+    if (strpos($newUrl,'?foto=1') !== false) {
+        return redirect('/jutarnji/'.$id);
+    }
+
     $text = prepareLink($crawler->filterXPath('//*[@class="dr_article"]')->html());
     $image = $crawler->filterXPath('//*[@id="foto"]/ul/li/div[1]/img')->attr('src');
     return view('single', compact('text', 'image'));
