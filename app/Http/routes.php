@@ -16,3 +16,5 @@ use Illuminate\Http\Request;
 $app->get('/', 'NewsController@jutarnjiHome');
 $app->get('/jutarnji/{id}', 'NewsController@jutarnjiGallery');
 $app->get('/jutarnji/{slug}/{id}', 'NewsController@jutarnjiArticle');
+
+$app->get('/index.hr', 'NewsController@indexHome');

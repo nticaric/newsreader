@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Laravel\Lumen\Routing\Controller as BaseController;
 use App\NewsScrapers\JutarnjiScraper;
+use App\NewsScrapers\IndexScraper;
 
 class NewsController extends BaseController
 {
@@ -30,5 +31,11 @@ class NewsController extends BaseController
     {
         $images = $jutarnji->getGallery($id);
         return view('gallery', compact('images'));
+    }
+
+    public function indexHome(IndexScraper $jutarnji)
+    {
+        $news = $jutarnji->parseHomePage();
+        return view('home', compact('news'));
     }
 }
