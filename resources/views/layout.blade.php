@@ -22,7 +22,6 @@
 </head>
 
 <body>
-
     <header class="header push-down-45">
         <div class="container">
             <div class="logo  pull-left">
@@ -43,10 +42,10 @@
 
                 <div class="collapse  navbar-collapse" id="readable-navbar-collapse">
                     <ul class="navigation">
-                        <li class="active">
+                        <li @if(app('request')->segment(1) == 'jutarnji' || app('request')->segment(1) == '') class="active" @endif>
                             <a href="/" class="dropdown-toggle" data-toggle="dropdown">Jutarnji.hr</a>
                         </li>
-                        <li class="">
+                        <li @if(app('request')->segment(1) == 'index.hr' ) class="active" @endif>
                             <a href="/index.hr" class="dropdown-toggle" data-toggle="dropdown">Index.hr</a>
                         </li>
                     </ul>
