@@ -12,4 +12,23 @@ class NewsController extends BaseController
         $news = $jutarnji->parseHomePage();
         return view('home', compact('news'));
     }
+
+    public function article($slug, $id, JutarnjiScraper $jutarnji)
+    {
+        //get article type
+        $articleType = $jutarnji->getArticleType($slug, $id);
+
+        if($articleType == 'gallery') {
+            return redirect('/jutarnji/'.$id);
+        }
+
+        list($text, $image) = $jutarnji->getArticle($slug, $id);
+        return view('single', compact('text', 'image'));
+    }
+
+    public function gallery($id, JutarnjiScraper $jutarnji)
+    {
+        $images = $jutarnji->getGallery($id);
+        return view('gallery', compact('images'));
+    }
 }
