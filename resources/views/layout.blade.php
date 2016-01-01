@@ -54,10 +54,12 @@
             </nav>
         </div>
     </header>
-
-    <div class="container">
-        <div class="grid row">
-            @yield('content')
+    
+    <div class="multi-columns">
+        <div class="container">
+            <div class="grid row">
+                @yield('content')
+            </div>
         </div>
     </div>
     
