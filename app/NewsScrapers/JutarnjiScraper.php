@@ -61,7 +61,7 @@ class JutarnjiScraper {
             return view('gallery', compact('images'));
         }
 
-        $text = prepareLink($crawler->filterXPath('//*[@class="dr_article"]')->html());
+        $text = $this->prepareLink($crawler->filterXPath('//*[@class="dr_article"]')->html());
         $image = $crawler->filterXPath('//*[@id="foto"]/ul/li/div[1]/img')->attr('src');
         
         return [$text, $image];

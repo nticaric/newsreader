@@ -7,13 +7,13 @@ use App\NewsScrapers\JutarnjiScraper;
 
 class NewsController extends BaseController
 {
-    public function jutarnji(JutarnjiScraper $jutarnji)
+    public function jutarnjiHome(JutarnjiScraper $jutarnji)
     {
         $news = $jutarnji->parseHomePage();
         return view('home', compact('news'));
     }
 
-    public function article($slug, $id, JutarnjiScraper $jutarnji)
+    public function jutarnjiArticle($slug, $id, JutarnjiScraper $jutarnji)
     {
         //get article type
         $articleType = $jutarnji->getArticleType($slug, $id);
@@ -26,7 +26,7 @@ class NewsController extends BaseController
         return view('single', compact('text', 'image'));
     }
 
-    public function gallery($id, JutarnjiScraper $jutarnji)
+    public function jutarnjiGallery($id, JutarnjiScraper $jutarnji)
     {
         $images = $jutarnji->getGallery($id);
         return view('gallery', compact('images'));

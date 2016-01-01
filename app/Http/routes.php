@@ -13,6 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-$app->get('/', 'NewsController@jutarnji');
-$app->get('/jutarnji/{id}', 'NewsController@gallery');
-$app->get('/jutarnji/{slug}/{id}', 'NewsController@article');
+$app->get('/', 'NewsController@jutarnjiHome');
+$app->get('/jutarnji/{id}', 'NewsController@jutarnjiGallery');
+$app->get('/jutarnji/{slug}/{id}', 'NewsController@jutarnjiArticle');
