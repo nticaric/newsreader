@@ -3,9 +3,9 @@
 @section('content')
 
     @foreach($images as $image)
-        <div class="boxed  push-down-60">
+        <div class="col-md-12 push-down-60">
 
-            <img class="wp-post-image" src="{{$image}}">
+            <img src="{{$image}}">
 
         </div>
     @endforeach
