@@ -6,6 +6,7 @@ use Laravel\Lumen\Routing\Controller as BaseController;
 use App\NewsScrapers\JutarnjiScraper;
 use App\NewsScrapers\IndexScraper;
 use App\NewsScrapers\VecernjiScraper;
+use App\NewsScrapers\NethrScraper;
 
 class NewsController extends BaseController
 {
@@ -41,6 +42,12 @@ class NewsController extends BaseController
     }
 
     public function vecernjiHome(VecernjiScraper $sraper)
+    {
+        $news = $sraper->parseHomePage();
+        return view('home', compact('news'));
+    }
+
+    public function nethrHome(NethrScraper $sraper)
     {
         $news = $sraper->parseHomePage();
         return view('home', compact('news'));

@@ -48,6 +48,9 @@
                         <li @if(app('request')->segment(1) == 'index.hr' ) class="active" @endif>
                             <a href="/index.hr" class="dropdown-toggle" data-toggle="dropdown">Index.hr</a>
                         </li>
+                        <li @if(app('request')->segment(1) == 'net.hr' ) class="active" @endif>
+                            <a href="/net.hr" class="dropdown-toggle" data-toggle="dropdown">Net.hr</a>
+                        </li>
                         <li @if(app('request')->segment(1) == 'vecernji.hr' ) class="active" @endif>
                             <a href="/vecernji.hr" class="dropdown-toggle" data-toggle="dropdown">Vecernji.hr</a>
                         </li>
