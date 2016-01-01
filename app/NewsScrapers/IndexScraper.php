@@ -22,10 +22,10 @@ class IndexScraper {
                 $n = new stdClass;
                 $n->link = $this->prepareLink( (string)$entry->link );
                 $n->image = $this->exstractImage((string) $entry->description);
-                $n->category = (string)$entry->category[0]['term'];
+                $n->category = 'Vijesti';
                 $n->title = (string) $entry->title;
                 $n->summary = $this->removeImageFromDesc( (string) $entry->description );
-                $n->author  = $entry->author->name;
+                $n->author  = 'Index.hr';
                 $n->updated  = (new DateTime($entry->pubDate))->format("d M G:i");
                 $news[] = $n;
 
@@ -34,8 +34,8 @@ class IndexScraper {
     }
 
     public function prepareLink($text) {
-        $text = str_replace("http://www.index.hr/", '/index.hr/', $text);
-        $text = str_replace('src="/index.hr', 'src="http://index.hr', $text);
+        //$text = str_replace("http://www.index.hr/", '/index.hr/', $text);
+        //$text = str_replace('src="/index.hr', 'src="http://index.hr', $text);
 
         //$text = preg_replace("/<script.*?\/script>/s", "", $text) ? : $text;
         return $text;

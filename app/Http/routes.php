@@ -18,3 +18,5 @@ $app->get('/jutarnji/{id}', 'NewsController@jutarnjiGallery');
 $app->get('/jutarnji/{slug}/{id}', 'NewsController@jutarnjiArticle');
 
 $app->get('/index.hr', 'NewsController@indexHome');
+
+$app->get('/vecernji.hr', 'NewsController@vecernjiHome');
