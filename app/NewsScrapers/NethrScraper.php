@@ -19,6 +19,7 @@ class NethrScraper {
         $entries = @simplexml_load_file($url);
 
         foreach ($entries->channel->item as $entry) {
+            try {
                 $n = new stdClass;
                 $n->link = $this->prepareLink( (string)$entry->link );
                 $n->image = $this->exstractImage($entry->children('media', TRUE)->thumbnail->attributes()->url);
@@ -28,6 +29,10 @@ class NethrScraper {
                 $n->author  = $entry->children('dc', TRUE)->creator;
                 $n->updated  = (new DateTime($entry->pubDate))->format("d M G:i");
                 $news[] = $n;
+            } catch (Exception $e) {
+                
+            }
+
 
         }
         return $news;
