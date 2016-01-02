@@ -40,26 +40,6 @@ class JutarnjiScraper {
         $url = "http://www.jutarnji.hr/".$slug."/".$id;
         $client = new Client();
         $crawler = $client->request('GET', $url);
-        
-        $newUrl = $crawler->filterXPath("//meta[@property='og:url']")->attr('content');
-
-        //ako je domidizajn
-        if(strpos($newUrl, 'domidizajn.jutarnji.hr') !== false) {
-            $crawler = $client->request('GET', $newUrl);
-            $galleryLink = $crawler->filterXPath('//*[@class="single-text-gallerylink button"]')->attr('href');
-            
-            $crawler = $client->request('GET', $galleryLink);
-
-            $postID = $crawler->filterXPath('//*[@name="comment_post_ID"]')->attr('value');
-            $url = "http://domidizajn.jutarnji.hr/wp-admin/admin-ajax.php?action=dd_gallery_photos&postid=".$postID;
-            $json = file_get_contents($url);
-            $galleryThumbs = json_decode($json);
-
-            foreach ($galleryThumbs->photos as $thumb) {
-                $images[] = $thumb->src;
-            }
-            return view('gallery', compact('images'));
-        }
 
         $text = $this->prepareLink($crawler->filterXPath('//*[@class="dr_article"]')->html());
         $image = $crawler->filterXPath('//*[@id="foto"]/ul/li/div[1]/img')->attr('src');
@@ -88,6 +68,30 @@ class JutarnjiScraper {
 
             if($image) $images[] = $image;
         } while ($image);
+        return $images;
+    }
+
+    public function getImagesForDomIDizajn($slug, $id)
+    {
+        $url = "http://www.jutarnji.hr/".$slug."/".$id;
+        $client = new Client();
+        $crawler = $client->request('GET', $url);
+
+        $newUrl = $crawler->filterXPath("//meta[@property='og:url']")->attr('content');
+
+        $crawler = $client->request('GET', $newUrl);
+        $galleryLink = $crawler->filterXPath('//*[@class="single-text-gallerylink button"]')->attr('href');
+        
+        $crawler = $client->request('GET', $galleryLink);
+
+        $postID = $crawler->filterXPath('//*[@name="comment_post_ID"]')->attr('value');
+        $url = "http://domidizajn.jutarnji.hr/wp-admin/admin-ajax.php?action=dd_gallery_photos&postid=".$postID;
+        $json = file_get_contents($url);
+        $galleryThumbs = json_decode($json);
+
+        foreach ($galleryThumbs->photos as $thumb) {
+            $images[] = $thumb->src;
+        }
         return $images;
     }
 
