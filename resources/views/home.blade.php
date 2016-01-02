@@ -45,4 +45,15 @@
       </div>
     </div>
   @endforeach
+
+  <script type="text/javascript">
+      $( window ).load( function() {
+        var elem = document.querySelector('.grid');
+        var msnry = new Masonry( elem, {
+          // options
+          itemSelector: '.grid-item',
+        });
+      });
+
+  </script>
 @stop

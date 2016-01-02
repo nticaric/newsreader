@@ -5519,18 +5519,21 @@ body.search-mode .search-panel {
 
 .post-content {
   margin-bottom: 30px;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.65;
   color: #E5DA73;
   text-align: justify;
   margin-top: 10px;
 }
-.grid {
-  height: auto !important;
-}
+
 .bulletlist {
   margin: 0;
   padding: 0;
+  list-style: none;
+}
+.bulletlist li {
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 @media (min-width:768px) {
   .post-content {
