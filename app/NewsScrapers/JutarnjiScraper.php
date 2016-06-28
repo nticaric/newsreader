@@ -41,9 +41,20 @@ class JutarnjiScraper
 
         $text  = $this->prepareLink($crawler->filter('.article_body section')->html());
         $image = $crawler->filter('article > div > div > img')->attr('src');
+        $image = str_replace('WIDE_380', 'WIDE_1080', $image);
         $title = $crawler->filter('.container section h1')->text();
+        try {
+            $pictureAuthor = $crawler->filter('.picture-author')->text();
+        } catch (Exception $e) {
+            $pictureAuthor = "";
+        }
+        try {
+            $pictureCaption = $crawler->filter('.picture-caption ')->text();
+        } catch (Exception $e) {
+            $pictureCaption = "";
+        }
 
-        return [$text, $image, $title];
+        return [$text, $image, $title, $pictureAuthor, $pictureCaption];
     }
 
     public function getGallery($id)
@@ -99,11 +110,11 @@ class JutarnjiScraper
 
     public function getArticleType($cat, $sub, $slug, $id)
     {
-        $url     = "http://www.jutarnji.hr/{$cat}/{$sub}/{$slug}/{$id}/";
+        $url = "http://www.jutarnji.hr/{$cat}/{$sub}/{$slug}/{$id}/";
 
         $client  = new Client();
         $crawler = $client->request('GET', $url);
-        $newUrl = $crawler->filterXPath("//meta[@property='og:url']")->attr('content');
+        $newUrl  = $crawler->filterXPath("//meta[@property='og:url']")->attr('content');
 
         if (strpos($newUrl, '?foto=1') !== false) {
             return 'gallery';

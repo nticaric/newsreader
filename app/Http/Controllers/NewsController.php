@@ -31,8 +31,8 @@ class NewsController extends BaseController
             return view('gallery', compact('images'));
         }
 
-        list($text, $image, $title) = $scraper->getArticle($cat, $sub, $slug, $id);
-        return view('single', compact('text', 'image', 'title'));
+        list($text, $image, $title, $pictureAuhtor, $pictureCaption) = $scraper->getArticle($cat, $sub, $slug, $id);
+        return view('single', compact('text', 'image', 'title', 'pictureAuhtor', 'pictureCaption'));
     }
 
     public function jutarnjiGallery($id, JutarnjiScraper $scraper)
@@ -52,7 +52,7 @@ class NewsController extends BaseController
         $news = $scraper->parseHomePage();
         return view('home', compact('news'));
     }   
-    
+
     public function poslovniHome(PoslovniHrScraper $scraper)
     {
         $news = $scraper->parseHomePage();

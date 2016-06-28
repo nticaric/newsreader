@@ -14,6 +14,11 @@
                         <picture>
                             <img src="{{$image}}">
                         </picture>
+                        <figcaption class="featured-image-caption">
+                            <div class="content-width">
+                                <i class="fa fa-camera"></i> {{$pictureCaption}} <span class="featured-image-credit">({{$pictureAuhtor}})</span>
+                            </div>
+                        </figcaption>
                     </figure>
                     <div class="item-content ">
                         <div class="item-body">
