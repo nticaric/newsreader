@@ -2,19 +2,25 @@
 
 @section('content')
 
-    <div class="col-md-8 col-sm-12">
 
-        <div class="meta">
-            <img class="wp-post-image" src="{{$image}}" alt="Blog image" width="1138" height="493">
+        <div id="content-header"></div>
+        <div id="content-articles">
+            <div id="well">
+                <article id="item-717956" class="item article global has-hero">
+                    <header class="item-header content-width">
+                        <h1>{{$title}}</h1>
+                    </header>
+                    <figure class="featured-image">
+                        <picture>
+                            <img src="{{$image}}">
+                        </picture>
+                    </figure>
+                    <div class="item-content ">
+                        <div class="item-body">
+                            {!! $text !!}
+                        </div>
+                    </div>
+                </article>
+            </div>
         </div>
-
-        <div class="post-content">
-            {!! $text !!}
-        </div>
-        <div class="post-comments">
-            <a class="btn  btn-primary" href="/">Back to Homepage</a>
-        </div>
-
-    </div>
-
 @stop

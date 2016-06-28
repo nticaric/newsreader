@@ -13,7 +13,9 @@
 
             <figure class="queue-article-hero">
                 <picture>
+                  <a href="{{$entry->link}}">
                     <img src="{{$entry->image}}" />
+                  </a>
                 </picture>
             </figure>
             <div class="queue-article-content">

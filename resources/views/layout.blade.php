@@ -19,6 +19,9 @@
             <a href="/net.hr">net.hr</a>
             <a href="/vecernji.hr">vecernji.hr</a>
         </div>
+        <div class="logo">
+            <a href="">TNT Readable News</a>
+        </div>
     </header>
 
     <div id="container">

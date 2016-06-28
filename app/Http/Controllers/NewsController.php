@@ -16,10 +16,10 @@ class NewsController extends BaseController
         return view('home', compact('news'));
     }
 
-    public function jutarnjiArticle($slug, $id, JutarnjiScraper $scraper)
+    public function jutarnjiArticle($cat, $sub, $slug, $id, JutarnjiScraper $scraper)
     {
         //get article type
-        $articleType = $scraper->getArticleType($slug, $id);
+        $articleType = $scraper->getArticleType($cat, $sub, $slug, $id);
 
         if($articleType == 'gallery') {
             return redirect('/jutarnji/'.$id);
@@ -30,8 +30,8 @@ class NewsController extends BaseController
             return view('gallery', compact('images'));
         }
 
-        list($text, $image) = $scraper->getArticle($slug, $id);
-        return view('single', compact('text', 'image'));
+        list($text, $image, $title) = $scraper->getArticle($cat, $sub, $slug, $id);
+        return view('single', compact('text', 'image', 'title'));
     }
 
     public function jutarnjiGallery($id, JutarnjiScraper $scraper)

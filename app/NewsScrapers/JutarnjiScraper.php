@@ -33,16 +33,17 @@ class JutarnjiScraper
         return $news;
     }
 
-    public function getArticle($slug, $id)
+    public function getArticle($cat, $sub, $slug, $id)
     {
-        $url     = "http://www.jutarnji.hr/" . $slug . "/" . $id;
+        $url     = "http://www.jutarnji.hr/{$cat}/{$sub}/{$slug}/{$id}/";
         $client  = new Client();
         $crawler = $client->request('GET', $url);
 
-        $text  = $this->prepareLink($crawler->filterXPath('//*[@class="dr_article"]')->html());
-        $image = $crawler->filterXPath('//*[@id="foto"]/ul/li/div[1]/img')->attr('src');
+        $text  = $this->prepareLink($crawler->filter('.article_body section')->html());
+        $image = $crawler->filter('article > div > div > img')->attr('src');
+        $title = $crawler->filter('.container section h1')->text();
 
-        return [$text, $image];
+        return [$text, $image, $title];
     }
 
     public function getGallery($id)
@@ -96,12 +97,12 @@ class JutarnjiScraper
         return $images;
     }
 
-    public function getArticleType($slug, $id)
+    public function getArticleType($cat, $sub, $slug, $id)
     {
-        $url     = "http://www.jutarnji.hr/" . $slug . "/" . $id;
+        $url     = "http://www.jutarnji.hr/{$cat}/{$sub}/{$slug}/{$id}/";
+
         $client  = new Client();
         $crawler = $client->request('GET', $url);
-
         $newUrl = $crawler->filterXPath("//meta[@property='og:url']")->attr('content');
 
         if (strpos($newUrl, '?foto=1') !== false) {
