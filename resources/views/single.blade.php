@@ -16,11 +16,28 @@
                         </picture>
                         <figcaption class="featured-image-caption">
                             <div class="content-width">
-                                <i class="fa fa-camera"></i> {{$pictureCaption}} <span class="featured-image-credit">({{$pictureAuhtor}})</span>
+                                <i class="fa fa-camera"></i> {{$meta['pictureCaption']}} <span class="featured-image-credit">({{$meta['pictureAuthor']}})</span>
                             </div>
                         </figcaption>
                     </figure>
-                    <div class="item-content ">
+                    <div class="item-content">
+                        <div class="item-meta">
+                            <div class="byline item-meta-row">
+                                <h5>Written by</h5>
+                                <a href="#" class="author-name" data-index="0">{{$meta['author']}}</a>
+                            </div>
+
+                            <div class="item-obsession item-meta-row">
+                                <h5>Category</h5>
+                                <a href="#">{{$meta['category']}}</a>
+                            </div>
+
+                            <div class="item-timestamp item-meta-row">
+                                <h5>Date</h5>
+                                <span class="timestamp" itemprop="datePublished">June 27, 2016</span>
+                                <br><br>
+                            </div>
+                        </div>
                         <div class="item-body">
                             {!! $text !!}
                         </div>

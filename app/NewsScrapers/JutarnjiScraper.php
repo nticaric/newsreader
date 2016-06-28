@@ -43,18 +43,30 @@ class JutarnjiScraper
         $image = $crawler->filter('article > div > div > img')->attr('src');
         $image = str_replace('WIDE_380', 'WIDE_1080', $image);
         $title = $crawler->filter('.container section h1')->text();
+        $meta = [];
         try {
-            $pictureAuthor = $crawler->filter('.picture-author')->text();
+            $meta['pictureAuthor'] = $crawler->filter('.picture-author')->text();
         } catch (Exception $e) {
-            $pictureAuthor = "";
+            $meta['pictureAuthor'] = "";
         }
         try {
-            $pictureCaption = $crawler->filter('.picture-caption ')->text();
+            $meta['pictureCaption'] = $crawler->filter('.picture-caption ')->text();
         } catch (Exception $e) {
-            $pictureCaption = "";
+            $meta['pictureCaption'] = "";
         }
 
-        return [$text, $image, $title, $pictureAuthor, $pictureCaption];
+        try {
+            $meta['author'] = $crawler->filter("meta[name='twitter:creator']")->attr('content');
+        } catch (Exception $e) {
+            $meta['author'] = "";
+        }
+
+        try {
+            $meta['category'] = $crawler->filter("body")->attr('data-category');            
+        } catch (Exception $e) {
+            $meta['category'] = ""; 
+        }
+        return [$text, $image, $title, $meta];
     }
 
     public function getGallery($id)

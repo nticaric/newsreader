@@ -31,8 +31,8 @@ class NewsController extends BaseController
             return view('gallery', compact('images'));
         }
 
-        list($text, $image, $title, $pictureAuhtor, $pictureCaption) = $scraper->getArticle($cat, $sub, $slug, $id);
-        return view('single', compact('text', 'image', 'title', 'pictureAuhtor', 'pictureCaption'));
+        list($text, $image, $title, $meta) = $scraper->getArticle($cat, $sub, $slug, $id);
+        return view('single', compact('text', 'image', 'title', 'meta'));
     }
 
     public function jutarnjiGallery($id, JutarnjiScraper $scraper)
