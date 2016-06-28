@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Laravel\Lumen\Routing\Controller as BaseController;
 use App\NewsScrapers\JutarnjiScraper;
 use App\NewsScrapers\IndexScraper;
-use App\NewsScrapers\VecernjiScraper;
+use App\NewsScrapers\VijestiHrScraper;
 use App\NewsScrapers\NethrScraper;
 
 class NewsController extends BaseController
@@ -46,7 +46,7 @@ class NewsController extends BaseController
         return view('home', compact('news'));
     }
 
-    public function vecernjiHome(VecernjiScraper $scraper)
+    public function vijestiHome(VijestiHrScraper $scraper)
     {
         $news = $scraper->parseHomePage();
         return view('home', compact('news'));

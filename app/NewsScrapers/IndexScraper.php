@@ -44,12 +44,17 @@ class IndexScraper {
     public function exstractImage($html)
     {
         preg_match_all('~<img.*?src=["\']+(.*?)["\']+~', $html, $urls);
+        $img = "";
         if(isset($urls[1])) {
-            $img = $urls[1][0];
-            $img = substr($img, 0, strpos($img, "&w="));
-            return $img ."&w=640&h=480&o=c";
+            foreach ($urls[1] as $m) {
+               $img = $m;
+            }
         }
-
+        if($img) {
+            $img = str_replace('thumbnail.ashx?path=', '', $img);
+            $img = substr($img, 0, strpos($img, "&"));
+            return $img;
+        }
         return "";
     }
 

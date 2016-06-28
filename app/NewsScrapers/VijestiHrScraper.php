@@ -1,38 +1,38 @@
 <?php namespace App\NewsScrapers;
 
-use Goutte\Client;
-use SimpleXMLElement;
-use stdClass;
 use DateTime;
-use Exception;
+use Goutte\Client;
+use stdClass;
 
-class VecernjiScraper {
+class VijestiHrScraper
+{
 
     public function parseHomePage()
     {
         $client = new Client();
 
-        $url = "http://www.vecernji.hr/rss";
+        $url     = "http://www.vijesti.rtl.hr/feed";
         $crawler = $client->request('GET', $url);
 
-        $news = [];
+        $news    = [];
         $entries = @simplexml_load_file($url);
 
         foreach ($entries->channel->item as $entry) {
-            $n = new stdClass;
-            $n->link = $this->prepareLink( (string)$entry->link );
-            $n->image = $entry->enclosure['url'];
+            $n           = new stdClass;
+            $n->link     = $this->prepareLink((string) $entry->link);
+            $n->image    = $entry->image;
             $n->category = (string) $entry->category;
-            $n->title = (string) $entry->title;
-            $n->summary = $this->removeImageFromDesc( (string) $entry->description );
-            $n->author  = 'Vecernji.hr';
+            $n->title    = (string) $entry->title;
+            $n->summary  = $this->removeImageFromDesc((string) $entry->content);
+            $n->author   = $entry->author;
             $n->updated  = (new DateTime($entry->pubDate))->format("d M G:i");
-            $news[] = $n;
+            $news[]      = $n;
         }
         return $news;
     }
 
-    public function prepareLink($text) {
+    public function prepareLink($text)
+    {
         $text = str_replace("http://www.index.hr/", '/index.hr/', $text);
         $text = str_replace('src="/index.hr', 'src="http://index.hr', $text);
 

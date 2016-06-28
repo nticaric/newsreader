@@ -22,7 +22,7 @@ class NethrScraper {
             try {
                 $n = new stdClass;
                 $n->link = $this->prepareLink( (string)$entry->link );
-                $n->image = $this->exstractImage($entry->children('media', TRUE)->thumbnail->attributes()->url);
+                $n->image = $this->getImageFromEntry($entry);
                 $n->category = $entry->category;
                 $n->title = (string) $entry->title;
                 $n->summary = $this->removeImageFromDesc( (string) $entry->description );
@@ -30,9 +30,7 @@ class NethrScraper {
                 $n->updated  = (new DateTime($entry->pubDate))->format("d M G:i");
                 $news[] = $n;
             } catch (Exception $e) {
-                
             }
-
 
         }
         return $news;
@@ -46,16 +44,17 @@ class NethrScraper {
         return $text;
     }
 
-    public function exstractImage($img)
-    {
-        $img = substr($img, 0, strpos($img, "?w="));
-        return $img ."?w=480";
-    }
-
     public function removeImageFromDesc($text)
     {
         //$text = preg_replace("/<img.*?\/>/s", "", $text) ? : $text;
         $text = strip_tags($text);
         return $text;
+    }
+
+    public function getImageFromEntry($entry)
+    {
+        $img = (string) $entry->children('media', TRUE)->thumbnail->attributes()->url;
+        $img = substr($img, 0, strpos($img, "?"));
+        return $img ."?quality=100&strip=all&w=450";
     }
 }

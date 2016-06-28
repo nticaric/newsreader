@@ -5952,7 +5952,8 @@ a.footnote:hover {
 }
 
 .queue-article-content {
-    overflow: hidden
+    overflow: hidden;
+    text-align: justify;
 }
 
 .queue-article-summary {

@@ -14,12 +14,12 @@
 <body class="home">
     <header id="header" class="">
         <div class="left">
-            <a href="/">jutarnji.hr</a>
-            <a href="/index.hr">index.hr</a>
-            <a href="/net.hr">net.hr</a>
-            <a href="/vecernji.hr">vecernji.hr</a>
+            <a @if(app('request')->segment(1) == 'jutarnji' || app('request')->segment(1) == '') class="active" @endif href="/">jutarnji.hr</a>
+            <a @if(app('request')->segment(1) == 'index.hr') class="active" @endif href="/index.hr">index.hr</a>
+            <a @if(app('request')->segment(1) == 'vijesti.hr') class="active" @endif href="/vijesti.hr">vijesti.hr</a>
+            <a @if(app('request')->segment(1) == 'net.hr') class="active" @endif href="/net.hr">net.hr</a>
         </div>
-        <div class="logo">
+        <div class="logo"> 
             <a href="">TNT Readable News</a>
         </div>
     </header>
