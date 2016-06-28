@@ -3427,7 +3427,6 @@ article.item {
     position: relative;
     background-color: #f9f9f9;
     border-bottom: 1px solid #e2e2e2;
-    padding-top: 40px;
     padding-bottom: 55px
 }
 
@@ -3485,12 +3484,6 @@ article.item.has-engage {
 
 .read-full .read-full-story-button {
     display: block
-}
-
-@media only screen and (min-width: 1025px) {
-    article.item {
-        padding-top:30px
-    }
 }
 
 @media only screen and (max-width: 599px) {
@@ -3587,7 +3580,7 @@ article.item.has-engage {
 
 .item-header h1 {
     color: #333;
-    font: 48px/56px AdelleBold,'Helvetica Neue',Helvetica,sans-serif
+    font: 40px AdelleBold,'Helvetica Neue',Helvetica,sans-serif
 }
 
 @media only screen and (min-width: 600px) {
@@ -7335,14 +7328,6 @@ a.footnote:hover {
 
 .is-blurred #container,.is-blurred #header {
     filter: url(data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+DQoJPGZpbHRlciBpZD0iYmx1ciI+DQoJCTxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjEwIiAvPg0KCTwvZmlsdGVyPg0KPC9zdmc+#blur)
-}
-
-.wrap {
-    overflow: hidden;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 970px;
-    padding-bottom: 200px
 }
 
 .box {
