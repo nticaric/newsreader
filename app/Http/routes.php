@@ -21,3 +21,4 @@ $app->get('/index.hr', 'NewsController@indexHome');
 
 $app->get('/net.hr', 'NewsController@nethrHome');
 $app->get('/vijesti.hr', 'NewsController@vijestiHome');
+$app->get('/poslovni.hr', 'NewsController@poslovniHome');

@@ -18,6 +18,7 @@
             <a @if(app('request')->segment(1) == 'index.hr') class="active" @endif href="/index.hr">index.hr</a>
             <a @if(app('request')->segment(1) == 'vijesti.hr') class="active" @endif href="/vijesti.hr">vijesti.hr</a>
             <a @if(app('request')->segment(1) == 'net.hr') class="active" @endif href="/net.hr">net.hr</a>
+            <a @if(app('request')->segment(1) == 'poslovni.hr') class="active" @endif href="/poslovni.hr">poslovni.hr</a>
         </div>
         <div class="logo"> 
             <a href="">TNT Readable News</a>

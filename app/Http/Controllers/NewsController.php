@@ -7,6 +7,7 @@ use App\NewsScrapers\JutarnjiScraper;
 use App\NewsScrapers\IndexScraper;
 use App\NewsScrapers\VijestiHrScraper;
 use App\NewsScrapers\NethrScraper;
+use App\NewsScrapers\PoslovniHrScraper;
 
 class NewsController extends BaseController
 {
@@ -47,6 +48,12 @@ class NewsController extends BaseController
     }
 
     public function vijestiHome(VijestiHrScraper $scraper)
+    {
+        $news = $scraper->parseHomePage();
+        return view('home', compact('news'));
+    }   
+    
+    public function poslovniHome(PoslovniHrScraper $scraper)
     {
         $news = $scraper->parseHomePage();
         return view('home', compact('news'));
