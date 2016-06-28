@@ -34,7 +34,7 @@
 
                             <div class="item-timestamp item-meta-row">
                                 <h5>Date</h5>
-                                <span class="timestamp" itemprop="datePublished">June 27, 2016</span>
+                                <span class="timestamp" itemprop="datePublished">{{$meta['published']}}</span>
                                 <br><br>
                             </div>
                         </div>

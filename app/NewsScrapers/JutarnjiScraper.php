@@ -66,6 +66,12 @@ class JutarnjiScraper
         } catch (Exception $e) {
             $meta['category'] = ""; 
         }
+        try {
+            $meta['published'] = $crawler->filter('.published-date')->text();
+            $meta['published'] = (new DateTime($meta['published']))->format("d M G:i");
+        } catch (Exception $e) {
+            $meta['published'] = "";
+        }
         return [$text, $image, $title, $meta];
     }
 
