@@ -174,6 +174,9 @@ article.item { z-index: 1; position: relative; border-bottom-width: 1px; border-
 .author-share-tools .share-buttons a.share-action, .item-body .share-buttons a.share-action { float: left; margin: 0px 15px 4px 0px; font-size: 25px; min-height: 35px; }
 .author-share-tools .share-buttons a.share-action:hover, .item-body .share-buttons a.share-action:hover { text-decoration: none; }
 
+body {
+  padding-top: 70px;
+}
 .navbar-default {
     background-color: #fff;
 }
