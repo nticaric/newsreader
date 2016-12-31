@@ -39,7 +39,7 @@ class JutarnjiScraper
         $client  = new Client();
         $crawler = $client->request('GET', $url);
 
-        $text  = $this->prepareLink($crawler->filter('.article_body section')->html());
+        $text  = $this->prepareLink($crawler->filter('.article_body #CImaincontent')->html());
         $image = $crawler->filter('article > div > div > img')->attr('src');
         $image = str_replace('WIDE_380', 'WIDE_1080', $image);
         $title = $crawler->filter('.container section h1')->text();
