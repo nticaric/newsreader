@@ -19,17 +19,18 @@ class JutarnjiScraper
         $news    = [];
         $entries = new SimpleXMLElement(file_get_contents($url));
 
-        foreach ($entries->entry as $entry) {
+        foreach ($entries->channel->item as $entry) {
             $n           = new stdClass;
-            $n->link     = $this->prepareLink((string) $entry->link[0]['href']);
+            $n->link     = $this->prepareLink((string)$entry->link);
             $n->image    = $this->getImageFromEntry($entry);
-            $n->category = (string) $entry->category[0]['term'];
+            $n->category = (string) $entry->category;;
             $n->title    = (string) $entry->title;
-            $n->summary  = (string) $entry->summary;
+            $n->summary  = (string) $entry->description;
             $n->author   = $entry->author->name;
             $n->updated  = (new DateTime($entry->updated))->format("d M G:i");
             $news[]      = $n;
         }
+
         return $news;
     }
 
@@ -166,9 +167,9 @@ class JutarnjiScraper
     public function getImageFromEntry($entry)
     {
         $imageLink = "";
-        foreach ($entry->link as $link) {
-            if (strpos($link['type'], 'image') !== false) {
-                $imageLink = (string) $link['href'];
+        foreach ($entry->enclosure as $link) {
+            if (strpos($link['type'], 'image/jpeg') !== false) {
+                $imageLink = (string) $link['url'];
             }
         }
         return $imageLink;
