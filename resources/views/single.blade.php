@@ -1,8 +1,7 @@
 @extends('layout')
 
 @section('content')
-
-
+    <div class="container">
         <div id="content-header"></div>
         <div id="content-articles">
             <div id="well">
@@ -47,4 +46,5 @@
                 </article>
             </div>
         </div>
+    </div>
 @stop
