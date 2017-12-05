@@ -1,5 +1,12 @@
 @extends('layout')
 
+@section('title', $title)
+
+@section('head')
+  <meta property="og:title" content="{{$title}}" />
+  <meta property="og:image" content="{{$image}}" />
+@stop
+
 @section('content')
     <div class="container">
         <div id="content-header"></div>
